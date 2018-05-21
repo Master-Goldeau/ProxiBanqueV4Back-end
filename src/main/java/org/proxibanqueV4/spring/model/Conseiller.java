@@ -19,9 +19,6 @@ public class Conseiller extends Personne {
 	private String login;
 	private String password;
 
-	// @OneToMany(mappedBy = "conseiller")
-	// private Set<Client> clientListConseiller = new HashSet<>();
-
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
 	@JoinColumn(name = "gerant_id")
 	private Gerant gerant;
@@ -71,7 +68,6 @@ public class Conseiller extends Personne {
 		this.gerant = gerant;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Conseiller [login=" + login + ", password=" + password + ", getId()=" + getId() + ", getNom()="
