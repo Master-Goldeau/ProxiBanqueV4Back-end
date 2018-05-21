@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.proxibanqueV4.spring.dao.CrudClientDAO;
 import org.proxibanqueV4.spring.dao.CrudCompteDAO;
+import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.Compte;
 import org.proxibanqueV4.spring.model.CompteCourant;
 import org.proxibanqueV4.spring.model.CompteEpargne;
@@ -14,17 +16,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("serviceCompte")
-public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte{
+public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PrestiBanqueServiceImplCompte.class);
 
 	@Autowired
 	private CrudCompteDAO crudCompteDao;
 
+	@Autowired
+	private CrudClientDAO crudClientDao;
+
 	// pr avoir des données ds la bdd
 	@PostConstruct
 	public void createSomeCompte() {
-		addCompte(new CompteEpargne(1,2));
-		addCompte(new CompteCourant(1, "visa"));
+		
 	}
 
 	// getter setter
@@ -37,34 +41,22 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	}
 
 	@Override
-	public void addCompte(Compte c) {
-		crudCompteDao.save(c);
-		
-	}
-
-	@Override
-	public List<Compte> listComptes() {
-		LOGGER.debug("lister clients");
-		LOGGER.info("information");
-		return crudCompteDao.findAll();
+	public void AssociatedAddCompteE(Client client) {
+		CompteEpargne epargne = new CompteEpargne(0, 0);
+		client.setCompteEpargne(epargne);
+		crudClientDao.save(client);
 	}
 
 	@Override
 	public void deleteCompte(long numcompte) {
 		crudCompteDao.delete(numcompte);
-		
+
 	}
 
 	@Override
-	public Compte editCompte(long numcompte) {
-		return crudCompteDao.findOne(numcompte);
-	}
-	
-
-	@Override
-	public void updateCcompte(Compte c) {
+	public void updateCompte(Compte c) {
 		crudCompteDao.save(c);
-		
+
 	}
 
 }

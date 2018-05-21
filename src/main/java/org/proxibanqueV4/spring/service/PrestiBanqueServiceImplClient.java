@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
 import org.proxibanqueV4.spring.model.Adresse;
 import org.proxibanqueV4.spring.model.Client;
+import org.proxibanqueV4.spring.model.CompteCourant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 	// meth
 	@Override
 	public void addClient(Client c) {
+		c.setCompteCourant(new CompteCourant(1, "visa"));
 		crudClientDao.save(c);
 
 	}

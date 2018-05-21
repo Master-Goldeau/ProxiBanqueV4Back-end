@@ -1,10 +1,9 @@
 package org.proxibanqueV4.spring.model;
 
-
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Classe du conseiller ; Prête pour les prochaines itérations du projet
@@ -20,8 +19,12 @@ public class Conseiller extends Personne {
 	private String login;
 	private String password;
 
-//	@OneToMany(mappedBy = "conseiller")
-//	private Set<Client> clientListConseiller = new HashSet<>();
+	// @OneToMany(mappedBy = "conseiller")
+	// private Set<Client> clientListConseiller = new HashSet<>();
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
+	@JoinColumn(name = "gerant_id")
+	private Gerant gerant;
 
 	// constructor
 	public Conseiller() {
@@ -36,13 +39,13 @@ public class Conseiller extends Personne {
 
 	// getter et setter
 
-//	public Set<Client> getClientListConseiller() {
-//		return clientListConseiller;
-//	}
-//
-//	public void setClientListConseiller(Set<Client> clientListConseiller) {
-//		this.clientListConseiller = clientListConseiller;
-//	}
+	// public Set<Client> getClientListConseiller() {
+	// return clientListConseiller;
+	// }
+	//
+	// public void setClientListConseiller(Set<Client> clientListConseiller) {
+	// this.clientListConseiller = clientListConseiller;
+	// }
 
 	public String getLogin() {
 		return login;
@@ -60,6 +63,15 @@ public class Conseiller extends Personne {
 		this.password = password;
 	}
 
+	public Gerant getGerant() {
+		return gerant;
+	}
+
+	public void setGerant(Gerant gerant) {
+		this.gerant = gerant;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Conseiller [login=" + login + ", password=" + password + ", getId()=" + getId() + ", getNom()="

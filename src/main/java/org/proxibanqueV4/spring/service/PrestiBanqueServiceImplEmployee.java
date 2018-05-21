@@ -23,29 +23,32 @@ public class PrestiBanqueServiceImplEmployee implements IPrestiBanqueServiceEmpl
 
 	@Autowired
 	private CrudConseillerDAO crudConseillerDao;
-	
+
 	@Autowired
 	private CrudGerantDAO crudGerantDao;
-	
+
 	@Autowired
 	private CrudAgenceDAO crudAgenceDao;
-	
-//	// getter setter
-//	public CrudClientDAO getCrudClientDao() {
-//		return crudClientDao;
-//	}
-//
-//	public void setCrudClientDao(CrudClientDAO crudClientDao) {
-//		this.crudClientDao = crudClientDao;
-//	}
-	
-	
+
+	// // getter setter
+	// public CrudClientDAO getCrudClientDao() {
+	// return crudClientDao;
+	// }
+	//
+	// public void setCrudClientDao(CrudClientDAO crudClientDao) {
+	// this.crudClientDao = crudClientDao;
+	// }
+
 	// pr avoir des données ds la bdd
 	@PostConstruct
 	public void createSomeEmployee() {
-		addAgence(new Agence("51nejd", "12/01/2013"));
-		addConseiller(new Conseiller("David", "Bernard", "conseiller1","conseiller1"));
-		addGerant(new Gerant("Foret","Julie","gerant1","gerant1"));
+		Agence agence = new Agence("51nejd", "12/01/2013");
+		Gerant gerant = new Gerant("Foret", "Julie", "gerant1", "gerant1");
+		Conseiller conseiller = new Conseiller("David", "Bernard", "conseiller1", "conseiller1");
+		agence.setGerant(gerant);
+		conseiller.setGerant(gerant);
+		addAgence(agence);
+		addConseiller(conseiller);
 	}
 
 	@Override
@@ -59,21 +62,19 @@ public class PrestiBanqueServiceImplEmployee implements IPrestiBanqueServiceEmpl
 	@Override
 	public void addConseiller(Conseiller conseiller) {
 		crudConseillerDao.save(conseiller);
-		
+
 	}
 
 	@Override
 	public void addGerant(Gerant gerant) {
 		crudGerantDao.save(gerant);
-		
+
 	}
 
 	@Override
 	public void addAgence(Agence agence) {
 		crudAgenceDao.save(agence);
-		
+
 	}
-
-
 
 }

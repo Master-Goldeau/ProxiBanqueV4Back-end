@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.Compte;
+import org.proxibanqueV4.spring.model.CompteEpargne;
+import org.proxibanqueV4.spring.model.Conseiller;
 import org.proxibanqueV4.spring.service.IPrestiBanqueServiceClient;
 import org.proxibanqueV4.spring.service.IPrestiBanqueServiceCompte;
+import org.proxibanqueV4.spring.service.IPrestiBanqueServiceEmployee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +26,9 @@ public class RestClientController {
 
 	@Autowired
 	IPrestiBanqueServiceCompte serviceCompte;
+
+	@Autowired
+	IPrestiBanqueServiceEmployee serviceEmployee;
 
 	@GetMapping(value = "/clients", produces = "application/json")
 	public List<Client> getAllClients() {
@@ -49,10 +55,17 @@ public class RestClientController {
 		service.updateClient(c);
 	}
 
-	@GetMapping(value = "/compteEpargnes/{numcompte}", produces = "application/json")
-	public Compte selectCompteEpargne(@PathVariable("numcompte") long numcompte) {
-		return serviceCompte.editCompte(numcompte);
+	@GetMapping(value = "/conseillers/", produces = "application/json")
+	public List<Conseiller> getAllConseillers() {
+		return serviceEmployee.listConseillers();
+	}
+
+	@PostMapping(value = "clients/{idClient}/compteEpargnes/", produces = "application/json")
+	public void selectCompteEpargne(@PathVariable("idClient") long idClient) {
+		Client client = service.editClient(idClient);
+		serviceCompte.AssociatedAddCompteE(client);
 
 	}
+
 
 }
