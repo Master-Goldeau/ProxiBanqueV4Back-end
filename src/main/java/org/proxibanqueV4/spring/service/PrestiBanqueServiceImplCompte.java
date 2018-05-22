@@ -28,7 +28,7 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	// pr avoir des données ds la bdd
 	@PostConstruct
 	public void createSomeCompte() {
-		
+
 	}
 
 	// getter setter
@@ -57,6 +57,12 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	public void updateCompte(Compte c) {
 		crudCompteDao.save(c);
 
+	}
+
+	@Override
+	public Compte editCompte(long numcompte) {
+
+		return crudCompteDao.findOne(numcompte);
 	}
 
 }
