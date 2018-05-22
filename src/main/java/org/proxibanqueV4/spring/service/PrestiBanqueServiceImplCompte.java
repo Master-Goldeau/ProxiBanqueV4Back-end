@@ -1,14 +1,11 @@
 package org.proxibanqueV4.spring.service;
 
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
 import org.proxibanqueV4.spring.dao.CrudCompteDAO;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.Compte;
-import org.proxibanqueV4.spring.model.CompteCourant;
 import org.proxibanqueV4.spring.model.CompteEpargne;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +37,10 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		this.crudCompteDao = crudCompteDao;
 	}
 
+	// pr avoir des données ds la bdd
 	@Override
 	public void AssociatedAddCompteE(Client client) {
+		LOGGER.info("Associer un compte épargne à un client lors de sa création");
 		CompteEpargne epargne = new CompteEpargne(0, 0);
 		client.setCompteEpargne(epargne);
 		crudClientDao.save(client);
@@ -49,20 +48,16 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 
 	@Override
 	public void deleteCompte(long numcompte) {
+		LOGGER.info("Suppression d'un compte");
 		crudCompteDao.delete(numcompte);
 
 	}
 
 	@Override
 	public void updateCompte(Compte c) {
+		LOGGER.info("Modification des informations contanu dans un compte");
 		crudCompteDao.save(c);
 
-	}
-
-	@Override
-	public Compte editCompte(long numcompte) {
-
-		return crudCompteDao.findOne(numcompte);
 	}
 
 }
