@@ -1,5 +1,7 @@
 package org.proxibanqueV4.spring.service;
 
+import java.util.List;
+
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.Compte;
 
@@ -10,5 +12,6 @@ public interface IPrestiBanqueServiceCompte {
 	public void deleteCompte(long numcompte);
 
 	public void updateCompte(Compte c);
+	
 
 }

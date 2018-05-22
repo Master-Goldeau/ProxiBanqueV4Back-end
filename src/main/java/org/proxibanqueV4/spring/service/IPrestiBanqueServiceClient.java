@@ -15,5 +15,4 @@ public interface IPrestiBanqueServiceClient {
 
 	public void updateClient(Client c);
 
-
 }

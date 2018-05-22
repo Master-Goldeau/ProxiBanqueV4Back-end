@@ -1,5 +1,7 @@
 package org.proxibanqueV4.spring.service;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
@@ -50,7 +52,6 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	public void deleteCompte(long numcompte) {
 		LOGGER.info("Suppression d'un compte");
 		crudCompteDao.delete(numcompte);
-
 	}
 
 	@Override
@@ -59,5 +60,9 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		crudCompteDao.save(c);
 
 	}
+
+	
+	
+	
 
 }
