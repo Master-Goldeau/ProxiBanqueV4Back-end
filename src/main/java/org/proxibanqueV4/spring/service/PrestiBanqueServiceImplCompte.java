@@ -1,5 +1,8 @@
 package org.proxibanqueV4.spring.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
@@ -65,6 +68,7 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		return crudCompteDao.findOne(numCompte);
 	}
 	
+
 
 	
 	
