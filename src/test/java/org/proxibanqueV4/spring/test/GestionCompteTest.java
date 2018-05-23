@@ -1,5 +1,8 @@
 package org.proxibanqueV4.spring.test;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +44,7 @@ public class GestionCompteTest {
 
 	@Test
 	public void deleteCompte_Should_delete_A_Compte() {
-		CompteEpargne epargne = new CompteEpargne(0, 0);
+		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
 		Gcl.deleteCompte(epargne.getNumCompte());
 	}
 
@@ -52,9 +55,23 @@ public class GestionCompteTest {
 
 	@Test
 	public void updateCompte_Should_update_A_Compte() {
-		CompteEpargne epargne = new CompteEpargne(0, 0);
+		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
 		epargne.setSolde(20);
 		Gcl.updateCompte(epargne);
+	}
+
+	/**
+	 * Méthode editCompte_Should_edit_A_Client() permet de tester la méthode
+	 * editCompte() du service client
+	 */
+
+	@Test
+	public void editCompte_Should_edit_A_Compte() {
+		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
+		epargne.setNumCompte(1L);
+		when(dao.findOne(1L)).thenReturn(epargne);
+		CompteEpargne epargne1= (CompteEpargne) Gcl.editCompte(1L);
+		assertEquals(epargne1, epargne);
 	}
 
 }

@@ -5,36 +5,25 @@ import javax.persistence.Entity;
 /**
  * Class CompteCourant qui hérite de la Classe Compte
  * 
- * @author 
+ * @author
  *
  */
 
 @Entity
 public class CompteCourant extends Compte {
 
-	private double decouvertAutorise;
 	private String carteVisa;
 
 	public CompteCourant() {
 	}
 
-	public CompteCourant(double solde, double decouvertAutorise, String carteVisa) {
-		super(solde);
-		this.decouvertAutorise = decouvertAutorise;
+	public CompteCourant(double solde, String dateOuverture, String typeCompte, String carteVisa) {
+		super(solde, dateOuverture, typeCompte);
 		this.carteVisa = carteVisa;
 	}
 
-	public CompteCourant(double decouvertAutorise, String carteVisa) {
-		this.decouvertAutorise = decouvertAutorise;
+	public CompteCourant(String carteVisa) {
 		this.carteVisa = carteVisa;
-	}
-
-	public double getDecouvertAutorise() {
-		return decouvertAutorise;
-	}
-
-	public void setDecouvertAutorise(double decouvertAutorise) {
-		this.decouvertAutorise = decouvertAutorise;
 	}
 
 	public String getCarteVisa() {
@@ -47,7 +36,11 @@ public class CompteCourant extends Compte {
 
 	@Override
 	public String toString() {
-		return "CompteCourant [decouvertAutorise=" + decouvertAutorise + ", carteVisa=" + carteVisa + "]";
+		return "CompteCourant [carteVisa=" + carteVisa + ", getNumCompte()=" + getNumCompte() + ", getSolde()="
+				+ getSolde() + ", getDateOuverture()=" + getDateOuverture() + ", getTypeCompte()=" + getTypeCompte()
+				+ ", toString()=" + super.toString() + "]";
 	}
+
+
 
 }

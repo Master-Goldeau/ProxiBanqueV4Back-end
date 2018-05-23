@@ -22,8 +22,8 @@ public class CompteEpargne extends Compte {
 
 	}
 
-	public CompteEpargne(double solde, double tauxRemuneration) {
-		super(solde);
+	public CompteEpargne(double solde, String dateOuverture, String typeCompte, double tauxRemuneration) {
+		super(solde, dateOuverture, typeCompte);
 		this.tauxRemuneration = tauxRemuneration;
 	}
 
@@ -33,6 +33,13 @@ public class CompteEpargne extends Compte {
 
 	public void setTauxRemuneration(double tauxRemuneration) {
 		this.tauxRemuneration = tauxRemuneration;
+	}
+
+	@Override
+	public String toString() {
+		return "CompteEpargne [tauxRemuneration=" + tauxRemuneration + ", getNumCompte()=" + getNumCompte()
+				+ ", getSolde()=" + getSolde() + ", getDateOuverture()=" + getDateOuverture() + ", getTypeCompte()="
+				+ getTypeCompte() + ", toString()=" + super.toString() + "]";
 	}
 
 }

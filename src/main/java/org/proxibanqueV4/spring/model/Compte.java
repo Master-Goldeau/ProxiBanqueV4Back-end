@@ -1,14 +1,11 @@
 package org.proxibanqueV4.spring.model;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-
 
 /**
  * Classe abstraite Compte avec les attributs numCompte, solde, dateOuverture.
@@ -31,10 +28,12 @@ public abstract class Compte {
 
 	private String dateOuverture;
 
-	public Compte(long numCompte, double solde, String dateOuverture) {
-		this.numCompte = numCompte;
+	private String typeCompte;
+
+	public Compte(double solde, String dateOuverture, String typeCompte) {
 		this.solde = solde;
 		this.dateOuverture = dateOuverture;
+		this.typeCompte = typeCompte;
 	}
 
 	public Compte(double solde) {
@@ -66,6 +65,15 @@ public abstract class Compte {
 
 	public void setDateOuverture(String dateOuverture) {
 		this.dateOuverture = dateOuverture;
+	}
+
+	
+	public String getTypeCompte() {
+		return typeCompte;
+	}
+
+	public void setTypeCompte(String typeCompte) {
+		this.typeCompte = typeCompte;
 	}
 
 	@Override
