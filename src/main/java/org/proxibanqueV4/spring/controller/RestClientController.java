@@ -2,6 +2,8 @@ package org.proxibanqueV4.spring.controller;
 
 import java.util.List;
 
+import org.proxibanqueV4.spring.exception.AuditException;
+import org.proxibanqueV4.spring.exception.DecouvertException;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.Compte;
 import org.proxibanqueV4.spring.model.CompteEpargne;
@@ -30,7 +32,7 @@ public class RestClientController {
 
 	@Autowired
 	IPrestiBanqueServiceEmployee serviceEmployee;
-	
+
 	@Autowired
 	InterfaceVirAudService serviceAuditVirement;
 
@@ -71,15 +73,27 @@ public class RestClientController {
 
 	}
 
-	@PutMapping(value="virement/{numCompteDebiteur}/{numCompteCrediteur}/{montant}")
-	public void Virement(@PathVariable long numCompteCrediteur, @PathVariable long numCompteDebiteur, @PathVariable double montant) {
+	@PutMapping(value = "virement/{numCompteDebiteur}/{numCompteCrediteur}/{montant}")
+	public void virement(@PathVariable long numCompteCrediteur, @PathVariable long numCompteDebiteur,
+			@PathVariable double montant) {
 		try {
-			serviceAuditVirement.Virement(numCompteCrediteur, numCompteDebiteur, montant);
-		}catch (Exception e){
+			serviceAuditVirement.virement(numCompteCrediteur, numCompteDebiteur, montant);
+		} catch (DecouvertException e) {
 			e.printStackTrace();
-			
+
+		}
+
+	}
+
+	@GetMapping(value = "audit/{numCompte}")
+	public Compte audit(@PathVariable long numCompte) throws AuditException{	
+		if(serviceAuditVirement.audit(numCompte)==true) {
+			return null;
+		}
+		else{
+			return serviceCompte.editCompte(numCompte);
 		}
 		
-}
-
+		
+	}
 }

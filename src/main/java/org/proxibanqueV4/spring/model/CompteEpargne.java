@@ -4,7 +4,8 @@ import javax.persistence.Entity;
 
 /**
  * 
- * Class CompteEpargne qui hérite de la Classe Compte@author Clothilde et Morane
+ * Class CompteEpargne qui hérite de la Classe Compte
+ * @author Clothilde et Morane
  *
  */
 
