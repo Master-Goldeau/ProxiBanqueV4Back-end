@@ -9,6 +9,7 @@ import org.proxibanqueV4.spring.model.Conseiller;
 import org.proxibanqueV4.spring.service.IPrestiBanqueServiceClient;
 import org.proxibanqueV4.spring.service.IPrestiBanqueServiceCompte;
 import org.proxibanqueV4.spring.service.IPrestiBanqueServiceEmployee;
+import org.proxibanqueV4.spring.service.InterfaceVirAudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,9 @@ public class RestClientController {
 
 	@Autowired
 	IPrestiBanqueServiceEmployee serviceEmployee;
+	
+	@Autowired
+	InterfaceVirAudService serviceAuditVirement;
 
 	@GetMapping(value = "/clients", produces = "application/json")
 	public List<Client> getAllClients() {
@@ -67,5 +71,15 @@ public class RestClientController {
 
 	}
 
+	@PutMapping(value="virement/{numCompteDebiteur}/{numCompteCrediteur}/{montant}")
+	public void Virement(@PathVariable long numCompteCrediteur, @PathVariable long numCompteDebiteur, @PathVariable double montant) {
+		try {
+			serviceAuditVirement.Virement(numCompteCrediteur, numCompteDebiteur, montant);
+		}catch (Exception e){
+			e.printStackTrace();
+			
+		}
+		
+}
 
 }

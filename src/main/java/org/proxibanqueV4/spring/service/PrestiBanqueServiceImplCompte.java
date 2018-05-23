@@ -1,14 +1,11 @@
 package org.proxibanqueV4.spring.service;
 
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
 import org.proxibanqueV4.spring.dao.CrudCompteDAO;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.Compte;
-import org.proxibanqueV4.spring.model.CompteCourant;
 import org.proxibanqueV4.spring.model.CompteEpargne;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,6 +55,7 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		crudCompteDao.save(c);
 
 	}
+	
 
 	@Override
 	public Compte editCompte(long numcompte) {

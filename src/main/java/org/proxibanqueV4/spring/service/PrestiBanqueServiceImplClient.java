@@ -5,10 +5,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
+import org.proxibanqueV4.spring.dao.CrudCompteDAO;
 import org.proxibanqueV4.spring.model.Adresse;
 import org.proxibanqueV4.spring.model.Client;
+import org.proxibanqueV4.spring.model.Compte;
 import org.proxibanqueV4.spring.model.CompteCourant;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,14 @@ import org.springframework.stereotype.Service;
 
 @Service("service")
 public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient {
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(PrestiBanqueServiceImplClient.class);
 
 	@Autowired
 	private CrudClientDAO crudClientDao;
+	
+	@Autowired
+	private CrudCompteDAO crudCompteDao;
 
 	// pr avoir des données ds la bdd
 	@PostConstruct
@@ -69,4 +74,6 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 
 	}
 
+	
 }
+
