@@ -68,7 +68,20 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		return crudCompteDao.findOne(numCompte);
 	}
 	
+	
+	
+	List<Compte> listeCompte = new ArrayList<>();
 
+//	@Override
+//	public List<Compte> listComptes() {
+//		Client client = crudClientDao.findOne(id);
+//		List<Compte> listeCompte = new ArrayList<>();
+//		listeCompte.add(client.getCompteCourant());
+//	listeCompte.add(client.getCompteEpargne());
+//return listeCompte;
+		
+	}
+	
 
 	
 	

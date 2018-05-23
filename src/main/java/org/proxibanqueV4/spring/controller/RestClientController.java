@@ -2,6 +2,8 @@ package org.proxibanqueV4.spring.controller;
 
 import java.util.List;
 
+import org.proxibanqueV4.spring.exception.AuditException;
+import org.proxibanqueV4.spring.exception.DecouvertException;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.Compte;
 import org.proxibanqueV4.spring.model.CompteEpargne;
@@ -89,7 +91,7 @@ public class RestClientController {
 	public ResponseEntity<String> Virement(@PathVariable long numCompteCrediteur, @PathVariable long numCompteDebiteur,
 			@PathVariable double montant) {
 		try {
-			serviceAuditVirement.Virement(numCompteCrediteur, numCompteDebiteur, montant);
+			serviceAuditVirement.virement(numCompteCrediteur, numCompteDebiteur, montant);
 			return new ResponseEntity<String>("Virement fait!", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -98,4 +100,15 @@ public class RestClientController {
 
 	}
 
+	@GetMapping(value = "audit/{numCompte}")
+	public Compte audit(@PathVariable long numCompte) throws AuditException{	
+		if(serviceAuditVirement.audit(numCompte)==true) {
+			return null;
+		}
+		else{
+			return serviceCompte.editCompte(numCompte);
+		}
+		
+		
+	}
 }
