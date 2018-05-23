@@ -41,7 +41,7 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	@Override
 	public void AssociatedAddCompteE(Client client) {
 		LOGGER.info("Associer un compte épargne à un client lors de sa création");
-		CompteEpargne epargne = new CompteEpargne(0, 0);
+		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
 		client.setCompteEpargne(epargne);
 		crudClientDao.save(client);
 	}

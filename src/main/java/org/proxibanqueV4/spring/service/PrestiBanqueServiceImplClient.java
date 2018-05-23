@@ -45,7 +45,7 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 	@Override
 	public void addClient(Client c) {
 		LOGGER.info("Création d'un client assiocié à une compte courant");
-		c.setCompteCourant(new CompteCourant(1, "visa"));
+		c.setCompteCourant(new CompteCourant(1,"13/01/2016", "particulier","visa"));
 		crudClientDao.save(c);
 
 	}
