@@ -1,5 +1,6 @@
 package org.proxibanqueV4.spring.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -45,6 +46,7 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 	// meth
 	@Override
 	public void addClient(Client c) {
+		LOGGER.info("Création d'un client assiocié à une compte courant");
 		c.setCompteCourant(new CompteCourant(1, "visa"));
 		crudClientDao.save(c);
 
@@ -52,28 +54,29 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 
 	@Override
 	public List<Client> listClients() {
-		LOGGER.debug("lister clients");
-		LOGGER.info("information");
+		LOGGER.info("Afficher la liste des clients");
 		return crudClientDao.findAll();
 	}
 
 	@Override
 	public void deleteClient(long idClient) {
+		LOGGER.info("Suppression d'un client");
 		crudClientDao.delete(idClient);
 
 	}
 
 	@Override
 	public Client editClient(long idClient) {
+		LOGGER.info("Afficher un client");
 		return crudClientDao.findOne(idClient);
 	}
 
 	@Override
 	public void updateClient(Client c) {
+		LOGGER.info("Modifier les information d'un client");
 		crudClientDao.save(c);
 
 	}
 
-	
 }
 

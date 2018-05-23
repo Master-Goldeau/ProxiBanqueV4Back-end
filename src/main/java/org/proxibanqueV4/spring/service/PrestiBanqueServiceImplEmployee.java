@@ -7,9 +7,9 @@ import javax.annotation.PostConstruct;
 import org.proxibanqueV4.spring.dao.CrudAgenceDAO;
 import org.proxibanqueV4.spring.dao.CrudConseillerDAO;
 import org.proxibanqueV4.spring.dao.CrudGerantDAO;
-import org.proxibanqueV4.spring.model.Adresse;
+
 import org.proxibanqueV4.spring.model.Agence;
-import org.proxibanqueV4.spring.model.Client;
+
 import org.proxibanqueV4.spring.model.Conseiller;
 import org.proxibanqueV4.spring.model.Gerant;
 import org.slf4j.Logger;
@@ -30,14 +30,31 @@ public class PrestiBanqueServiceImplEmployee implements IPrestiBanqueServiceEmpl
 	@Autowired
 	private CrudAgenceDAO crudAgenceDao;
 
-	// // getter setter
-	// public CrudClientDAO getCrudClientDao() {
-	// return crudClientDao;
-	// }
-	//
-	// public void setCrudClientDao(CrudClientDAO crudClientDao) {
-	// this.crudClientDao = crudClientDao;
-	// }
+	// getter setter
+
+	public CrudConseillerDAO getCrudConseillerDao() {
+		return crudConseillerDao;
+	}
+
+	public void setCrudConseillerDao(CrudConseillerDAO crudConseillerDao) {
+		this.crudConseillerDao = crudConseillerDao;
+	}
+
+	public CrudGerantDAO getCrudGerantDao() {
+		return crudGerantDao;
+	}
+
+	public void setCrudGerantDao(CrudGerantDAO crudGerantDao) {
+		this.crudGerantDao = crudGerantDao;
+	}
+
+	public CrudAgenceDAO getCrudAgenceDao() {
+		return crudAgenceDao;
+	}
+
+	public void setCrudAgenceDao(CrudAgenceDAO crudAgenceDao) {
+		this.crudAgenceDao = crudAgenceDao;
+	}
 
 	// pr avoir des données ds la bdd
 	@PostConstruct
@@ -53,27 +70,28 @@ public class PrestiBanqueServiceImplEmployee implements IPrestiBanqueServiceEmpl
 
 	@Override
 	public List<Conseiller> listConseillers() {
-		LOGGER.debug("lister conseillers");
-		LOGGER.info("information");
+		LOGGER.info("La liste des conseillers");
 		return crudConseillerDao.findAll();
 
 	}
 
 	@Override
 	public void addConseiller(Conseiller conseiller) {
-		
+		LOGGER.info("Creation d'un conseiller");
 		crudConseillerDao.save(conseiller);
 
 	}
 
 	@Override
 	public void addGerant(Gerant gerant) {
+		LOGGER.info("Creation d'un gerant");
 		crudGerantDao.save(gerant);
 
 	}
 
 	@Override
 	public void addAgence(Agence agence) {
+		LOGGER.info("Creation d'une agence");
 		crudAgenceDao.save(agence);
 
 	}

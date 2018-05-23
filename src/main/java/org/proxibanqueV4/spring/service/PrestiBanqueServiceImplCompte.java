@@ -37,8 +37,10 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		this.crudCompteDao = crudCompteDao;
 	}
 
+	// pr avoir des données ds la bdd
 	@Override
 	public void AssociatedAddCompteE(Client client) {
+		LOGGER.info("Associer un compte épargne à un client lors de sa création");
 		CompteEpargne epargne = new CompteEpargne(0, 0);
 		client.setCompteEpargne(epargne);
 		crudClientDao.save(client);
@@ -46,21 +48,26 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 
 	@Override
 	public void deleteCompte(long numcompte) {
+		LOGGER.info("Suppression d'un compte");
 		crudCompteDao.delete(numcompte);
-
 	}
 
 	@Override
 	public void updateCompte(Compte c) {
+		LOGGER.info("Modification des informations contanu dans un compte");
 		crudCompteDao.save(c);
 
 	}
-	
 
 	@Override
-	public Compte editCompte(long numcompte) {
-
-		return crudCompteDao.findOne(numcompte);
+	public Compte editCompte(long numCompte) {
+		LOGGER.info("Afficher un compte");
+		return crudCompteDao.findOne(numCompte);
 	}
+	
+
+	
+	
+	
 
 }
