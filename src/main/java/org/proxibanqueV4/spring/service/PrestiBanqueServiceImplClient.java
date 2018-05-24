@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.CompteCourant;
+import org.proxibanqueV4.spring.model.CompteEpargne;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +49,9 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 
 	@Override
 	public void addClient(Client c) {
-		LOGGER.info("Création d'un client assiocié à une compte courant");
-		c.setCompteCourant(new CompteCourant(0, "13/01/2016", "particulier", "visa"));
+		LOGGER.info("Création d'un client assiocié à un compte courant et un compte épargne");
+		c.setCompteEpargne(new CompteEpargne(0,"28/05/2018","particulier", 0.03));
+		c.setCompteCourant(new CompteCourant(0, "28/05/2018", "particulier", "visa"));
 		crudClientDao.save(c);
 
 	}
@@ -80,9 +82,6 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 
 	}
 
-	// @Override
-	// public List<Client> ListesClientsParConseiller(long id) {
-	// return crudClientDao.findByConseiller(id);
-	// }
+
 
 }

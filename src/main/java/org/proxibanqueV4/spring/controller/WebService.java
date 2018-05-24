@@ -129,24 +129,24 @@ public class WebService {
 		serviceCompte.associatedAddCompteE(client);
 	}
 
-	// @CrossOrigin(origins = "*")
-	// @GetMapping(value = "/clients/{idClient}/comptes", produces =
-	// "application/json")
-	// public List<Compte> ListeComptesUnClient(@PathVariable long idClient) {
-	// return serviceCompte.listComptesUnClient(idClient);
-	// }
-	//
-	// @CrossOrigin(origins = "*")
-	// @GetMapping(value = "comptes/{numCompte}")
-	// public Compte AfficherCompteNumero(@PathVariable long numCompte) {
-	// return serviceCompte.editCompte(numCompte);
-	// }
-	//
-	// @CrossOrigin(origins = "*")
-	// @DeleteMapping(value = "/clients/{idClient}/comptes")
-	// public void removeCompte(@PathVariable("idClient") long idClient) {
-	// serviceCompte.deleteCompte(idClient);
-	// }
+	 @CrossOrigin(origins = "*")
+	 @GetMapping(value = "/clients/{idClient}/comptes", produces =
+	 "application/json")
+	 public List<Compte> ListeComptesUnClient(@PathVariable long idClient) {
+	 return serviceCompte.listComptesUnClient(idClient);
+	 }
+	
+	 @CrossOrigin(origins = "*")
+	 @GetMapping(value = "comptes/{numCompte}")
+	 public Compte AfficherCompteNumero(@PathVariable long numCompte) {
+	 return serviceCompte.editCompte(numCompte);
+	 }
+	 
+//	 @CrossOrigin(origins = "*")
+//	 @DeleteMapping(value = "/clients/{idClient}/comptes")
+//	 public void removeCompte(@PathVariable("idClient") long idClient) {
+//	 serviceCompte.deleteCompte(idClient);
+//	 }
 
 	/**
 	 * PUT Effectuer un virement compte à compte.
