@@ -15,6 +15,8 @@ public interface IPrestiBanqueServiceCompte {
 	
 	public Compte editCompte(long numCompte);
 
+
 	public List<Compte> listComptesUnClient(long idClient);
+
 	
 }

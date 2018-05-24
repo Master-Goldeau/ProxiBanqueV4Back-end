@@ -68,6 +68,7 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		return crudCompteDao.findOne(numCompte);
 	}
 
+
 	@Override
 	public List<Compte> listComptesUnClient(long idClient) {
 		LOGGER.info("Liste des comptes d'un client");
@@ -76,7 +77,19 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		listeCompte.add(client.getCompteCourant());
 		listeCompte.add(client.getCompteEpargne());
 		return listeCompte;
-
-	}
+}
 
 }
+
+	
+	
+	
+
+		
+	}
+	
+
+	
+	
+	
+>>>>>>> 36512c4f266d74d34acc803eb71867200c36208a

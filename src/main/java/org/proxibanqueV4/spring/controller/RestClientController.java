@@ -1,7 +1,9 @@
 package org.proxibanqueV4.spring.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.taglibs.standard.tag.common.core.ForEachSupport;
 import org.proxibanqueV4.spring.exception.AuditException;
 import org.proxibanqueV4.spring.exception.DecouvertException;
 import org.proxibanqueV4.spring.model.Client;
@@ -120,14 +122,12 @@ public class RestClientController {
 
 	}
 
-	@CrossOrigin(origins = "*")
-	@GetMapping(value = "audit/{numCompte}")
-	public Compte audit(@PathVariable long numCompte) throws AuditException {
-		if (serviceAuditVirement.audit(numCompte) == true) {
-			return null;
-		} else {
-			return serviceCompte.editCompte(numCompte);
-		}
 
-	}
+	@CrossOrigin(origins = "*")
+	@GetMapping(value = "audit/")
+	public List<Compte> audit() throws AuditException {
+		return serviceAuditVirement.audit();
+		
+}
+
 }

@@ -1,5 +1,8 @@
 package org.proxibanqueV4.spring.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.proxibanqueV4.spring.dao.CrudCompteDAO;
 import org.proxibanqueV4.spring.exception.AuditException;
 import org.proxibanqueV4.spring.exception.DecouvertException;
@@ -12,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 @Service("serviceAuditVirement")
 public class AuditVirementService implements InterfaceVirAudService {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(AuditVirementService.class);
 	@Autowired
 	private CrudCompteDAO crudCompteDao;
@@ -48,38 +51,29 @@ public class AuditVirementService implements InterfaceVirAudService {
 	}
 
 	@Override
-	public Boolean audit(long numCompte) throws AuditException {
-		// TODO Auto-generated method stub
-		Compte compte = serviceCompte.editCompte(numCompte);
-		double soldeCompte = compte.getSolde();
-		double auditAutorise = 0;
+	public List<Compte> audit() throws AuditException {
+		List<Compte> listTousLesComptes = crudCompteDao.findAll();
+		List<Compte> listTousLesComptesCritiques = new ArrayList<>();
+		double auditAutorise;
 
-		if (compte.getTypeCompte().equals("particulier")) {
-			auditAutorise = -5000;
-		} else if (compte.getTypeCompte().equals("entreprise")) {
-			auditAutorise = -50000;
-		} else {
-			throw new AuditException();
+		for (Compte compte : listTousLesComptes) {
+			if (compte.getTypeCompte().equals("particulier")) {
+				auditAutorise = -5000;
+			} else if (compte.getTypeCompte().equals("entreprise")) {
+				auditAutorise = -50000;
+			} else {
+				throw new AuditException();
+			}
+			if (compte.getSolde() < auditAutorise) {
+				LOGGER.info("Warning");
+				listTousLesComptesCritiques.add(compte);
+			}
+
+			else {
+				LOGGER.info("Ce client n'est pas un compte critique!");
+			}
+
 		}
-
-		if (soldeCompte < auditAutorise) {
-			LOGGER.info("Warning");
-			return false;
-		}
-
-		else {
-			LOGGER.info("Ce client n'est pas un compte critique!");
-			return true;
-		}
-
+		return listTousLesComptesCritiques;
 	}
-//
-//	@Override
-//	public void Simulation(long numCompte) {
-//		// TODO Auto-generated method stub
-//		Compte compte = serviceCompte.editCompte(numCompte);
-//		double soldeCompte = compte.getSolde();
-//
-//	}
-
 }
