@@ -7,6 +7,15 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+/**
+ * Classe Mère abstraite Personne Elle représente l'intégralité des acteurs de
+ * la banque Proxibanque.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ *
+ */
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Personne {
@@ -17,7 +26,20 @@ public abstract class Personne {
 	private String nom;
 	private String prenom;
 
-	// getter setter
+	// Constructeurs
+
+	public Personne() {
+		super();
+	}
+
+	public Personne(String nom, String prenom) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+
+	// Getter et Setter
+
 	public long getId() {
 		return id;
 	}
@@ -29,8 +51,6 @@ public abstract class Personne {
 	public String getNom() {
 		return nom;
 	}
-
-	
 
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -45,21 +65,10 @@ public abstract class Personne {
 	}
 
 	// toString
+
 	@Override
 	public String toString() {
 		return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
-	}
-
-	// constructeur
-	public Personne() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Personne(String nom, String prenom) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
 	}
 
 }

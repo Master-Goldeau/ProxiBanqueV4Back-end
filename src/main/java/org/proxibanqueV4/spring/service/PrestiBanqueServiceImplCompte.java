@@ -1,5 +1,8 @@
 package org.proxibanqueV4.spring.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
@@ -12,6 +15,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Classe d'implémentation de l'interface Service sur les comptes.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ *
+ */
+
 @Service("serviceCompte")
 public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PrestiBanqueServiceImplCompte.class);
@@ -22,13 +33,13 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	@Autowired
 	private CrudClientDAO crudClientDao;
 
-	// pr avoir des données ds la bdd
+	// Ajouter des comptes à la Base de Données.
 	@PostConstruct
 	public void createSomeCompte() {
 
 	}
 
-	// getter setter
+	// Getter et setter.
 	public CrudCompteDAO getCrudCompteDao() {
 		return crudCompteDao;
 	}
@@ -37,11 +48,10 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		this.crudCompteDao = crudCompteDao;
 	}
 
-	// pr avoir des données ds la bdd
 	@Override
-	public void AssociatedAddCompteE(Client client) {
+	public void associatedAddCompteE(Client client) {
 		LOGGER.info("Associer un compte épargne à un client lors de sa création");
-		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
+		CompteEpargne epargne = new CompteEpargne(0, "13/01/2016", "particulier", 0);
 		client.setCompteEpargne(epargne);
 		crudClientDao.save(client);
 	}
@@ -64,14 +74,15 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		LOGGER.info("Afficher un compte");
 		return crudCompteDao.findOne(numCompte);
 	}
-	
-	
-	
 
-		
+	@Override
+	public List<Compte> listComptesUnClient(long idClient) {
+		LOGGER.info("Liste des comptes d'un client");
+		Client client = crudClientDao.findOne(idClient);
+		List<Compte> listeCompte = new ArrayList<>();
+		listeCompte.add(client.getCompteCourant());
+		listeCompte.add(client.getCompteEpargne());
+		return listeCompte;
 	}
-	
 
-	
-	
-	
+}

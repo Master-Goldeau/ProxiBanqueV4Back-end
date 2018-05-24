@@ -17,6 +17,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Classe d'implémentation de l'interface Service des employés Proxibanque.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ *
+ */
 @Service("serviceEmployee")
 public class PrestiBanqueServiceImplEmployee implements IPrestiBanqueServiceEmployee {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PrestiBanqueServiceImplEmployee.class);
@@ -30,7 +37,7 @@ public class PrestiBanqueServiceImplEmployee implements IPrestiBanqueServiceEmpl
 	@Autowired
 	private CrudAgenceDAO crudAgenceDao;
 
-	// getter setter
+	// Getter et Setter
 
 	public CrudConseillerDAO getCrudConseillerDao() {
 		return crudConseillerDao;

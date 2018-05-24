@@ -21,18 +21,16 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @PropertySource("classpath:application.properties")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-
-	//pr mapper une url avec un dossier
+	// pr mapper une url avec un dossier
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
-	//pr brancher angular sur spring: autorise les requetes redirigées
+	// pr brancher angular sur spring: autorise les requetes redirigées
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedMethods("GET","POST","PUT","DELETE");
+		registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE");
 	}
 
-	
 }

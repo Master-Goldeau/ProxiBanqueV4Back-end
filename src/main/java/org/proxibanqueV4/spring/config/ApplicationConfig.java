@@ -27,13 +27,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = { "org.proxibanqueV4.spring" })
 public class ApplicationConfig {
 
-	
-	//property placeholder
-	//prendre l'interface
+	// property placeholder
+	// prendre l'interface
 	@Autowired
 	private Environment environnement;
 
-	//prendre javax.sql
+	// prendre javax.sql
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -51,7 +50,7 @@ public class ApplicationConfig {
 		return jpaTransactionManager;
 	}
 
-	//configuration du provider
+	// configuration du provider
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
@@ -60,7 +59,7 @@ public class ApplicationConfig {
 		return jpaVendorAdapter;
 	}
 
-	//genere entitymanagerfactory
+	// genere entitymanagerfactory
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();

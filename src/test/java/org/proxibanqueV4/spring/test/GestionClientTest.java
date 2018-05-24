@@ -11,16 +11,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import org.proxibanqueV4.spring.config.ApplicationConfig;
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
-import org.proxibanqueV4.spring.model.Adresse;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.service.PrestiBanqueServiceImplClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+/**
+ * Test Unitaire Mockito sur la Gestion des clients de Proxibanque.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
@@ -45,7 +50,7 @@ public class GestionClientTest {
 	 */
 	@Test
 	public void addClient_Should_add_A_Client() {
-		Client client = new Client("julie", "juju", "05020254032", new Adresse(1, "rue de la fi", "ville"));
+		Client client = new Client("julie", "juju", "05020254032", "rue de la fi", "ville", "01225");
 		Gcl.addClient(client);
 	}
 
@@ -56,7 +61,7 @@ public class GestionClientTest {
 
 	@Test
 	public void editClient_Should_edit_A_Client() {
-		Client client = new Client("julie", "juju", "05020254032", new Adresse(1, "rue de la fi", "ville"));
+		Client client = new Client("julie", "juju", "05020254032", "rue de la fi", "ville", "01225");
 		client.setId(1L);
 		when(dao.findOne(1L)).thenReturn(client);
 		Client client1 = Gcl.editClient(1L);
@@ -70,10 +75,10 @@ public class GestionClientTest {
 
 	@Test
 	public void deleteClient_Should_delete_A_Client() {
-		Client client = new Client("julie", "juju", "05020254032", new Adresse(1, "rue de la fi", "ville"));
+		Client client = new Client("julie", "juju", "05020254032", "rue de la fi", "ville", "01225");
 		Gcl.deleteClient(client.getId());
 	}
-	
+
 	/**
 	 * Méthode updateClient_Should_add_A_Client() permet de tester la méthode
 	 * deleteClient() du service client
@@ -81,11 +86,10 @@ public class GestionClientTest {
 
 	@Test
 	public void updateClient_Should_update_A_Client() {
-		Client client = new Client("julie", "juju", "05020254032", new Adresse(1, "rue de la fi", "ville"));
+		Client client = new Client("julie", "juju", "05020254032", "rue de la fi", "ville", "01225");
 		client.setPrenom("Camille");
 		Gcl.updateClient(client);
 	}
-	
 
 	/**
 	 * Méthode listClient_Should_list_A_Client() permet de tester la méthode
@@ -94,9 +98,9 @@ public class GestionClientTest {
 
 	@Test
 	public void listClient_Should_list_A_Client() {
-		Client client1 = new Client("julie", "juju", "05020254032", new Adresse(1, "rue de la fi", "ville"));
-		Client client2 = new Client("julie", "camille", "05020254032", new Adresse(1, "rue de la fi", "ville"));
-		List<Client> listClients= new ArrayList<>();
+		Client client1 = new Client("julie", "juju", "05020254032", "rue de la fi", "ville", "01225");
+		Client client2 = new Client("julie", "camille", "05020254032", "rue de la fi", "ville", "01225");
+		List<Client> listClients = new ArrayList<>();
 		listClients.add(client1);
 		listClients.add(client2);
 		Gcl.listClients();

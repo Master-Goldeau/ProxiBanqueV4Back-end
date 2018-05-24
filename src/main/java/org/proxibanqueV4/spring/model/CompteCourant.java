@@ -3,9 +3,12 @@ package org.proxibanqueV4.spring.model;
 import javax.persistence.Entity;
 
 /**
- * Class CompteCourant qui hérite de la Classe Compte
+ * Classe fille CompteCourant qui hérite de la classe mère Compte. Un compte
+ * courant a pour attribut une carte bancaire, mais également les paramètres de
+ * la classe Compte.
  * 
- * @author
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
  *
  */
 
@@ -13,6 +16,8 @@ import javax.persistence.Entity;
 public class CompteCourant extends Compte {
 
 	private String carteVisa;
+
+	// Constructeurs
 
 	public CompteCourant() {
 	}
@@ -26,6 +31,8 @@ public class CompteCourant extends Compte {
 		this.carteVisa = carteVisa;
 	}
 
+	// Getter et Setter
+
 	public String getCarteVisa() {
 		return carteVisa;
 	}
@@ -34,13 +41,13 @@ public class CompteCourant extends Compte {
 		this.carteVisa = carteVisa;
 	}
 
+	// toString
+
 	@Override
 	public String toString() {
 		return "CompteCourant [carteVisa=" + carteVisa + ", getNumCompte()=" + getNumCompte() + ", getSolde()="
 				+ getSolde() + ", getDateOuverture()=" + getDateOuverture() + ", getTypeCompte()=" + getTypeCompte()
 				+ ", toString()=" + super.toString() + "]";
 	}
-
-
 
 }

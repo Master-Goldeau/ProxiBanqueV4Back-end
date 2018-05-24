@@ -5,8 +5,6 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
-import org.proxibanqueV4.spring.dao.CrudCompteDAO;
-import org.proxibanqueV4.spring.model.Adresse;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.CompteCourant;
 import org.slf4j.Logger;
@@ -14,25 +12,30 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Classe d'implémentation de l'interface Service sur les clients.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ *
+ */
+
 @Service("service")
 public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(PrestiBanqueServiceImplClient.class);
 
 	@Autowired
 	private CrudClientDAO crudClientDao;
-	
-	@Autowired
-	private CrudCompteDAO crudCompteDao;
 
-	// pr avoir des données ds la bdd
+	// Ajouter des clients à la Base de Données.
 	@PostConstruct
 	public void createSomeClient() {
-		addClient(new Client("Sabanoglu", "Saban", "0201202202", new Adresse(7, "rue de Paris", "Paris")));
-		addClient(new Client("Davaro", "Memo", "0201202202", new Adresse(5, "impasse du Four", "Cherbourg")));
+		addClient(new Client("Sabanoglu", "Saban", "0201202202", "rue de Paris", "Paris", "010210"));
+		addClient(new Client("Davaro", "Memo", "0201202202", "impasse du Four", "Cherbourg", "010210"));
 	}
 
-	// getter setter
+	// Getter et Setter
 	public CrudClientDAO getCrudClientDao() {
 		return crudClientDao;
 	}
@@ -41,11 +44,12 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 		this.crudClientDao = crudClientDao;
 	}
 
-	// meth
+	// Méthodes
+
 	@Override
 	public void addClient(Client c) {
 		LOGGER.info("Création d'un client assiocié à une compte courant");
-		c.setCompteCourant(new CompteCourant(1,"13/01/2016", "particulier","visa"));
+		c.setCompteCourant(new CompteCourant(0, "13/01/2016", "particulier", "visa"));
 		crudClientDao.save(c);
 
 	}
@@ -76,5 +80,9 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 
 	}
 
-}
+	// @Override
+	// public List<Client> ListesClientsParConseiller(long id) {
+	// return crudClientDao.findByConseiller(id);
+	// }
 
+}

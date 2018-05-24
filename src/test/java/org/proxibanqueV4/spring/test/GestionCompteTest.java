@@ -20,6 +20,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+/**
+ * Test Unitaire Mockito sur la Gestion des comptes client de Proxibanque.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ **/
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationConfig.class })
 @WebAppConfiguration
@@ -44,7 +50,7 @@ public class GestionCompteTest {
 
 	@Test
 	public void deleteCompte_Should_delete_A_Compte() {
-		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
+		CompteEpargne epargne = new CompteEpargne(0, "13/01/2016", "particulier", 0);
 		Gcl.deleteCompte(epargne.getNumCompte());
 	}
 
@@ -55,7 +61,7 @@ public class GestionCompteTest {
 
 	@Test
 	public void updateCompte_Should_update_A_Compte() {
-		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
+		CompteEpargne epargne = new CompteEpargne(0, "13/01/2016", "particulier", 0);
 		epargne.setSolde(20);
 		Gcl.updateCompte(epargne);
 	}
@@ -67,10 +73,10 @@ public class GestionCompteTest {
 
 	@Test
 	public void editCompte_Should_edit_A_Compte() {
-		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
+		CompteEpargne epargne = new CompteEpargne(0, "13/01/2016", "particulier", 0);
 		epargne.setNumCompte(1L);
 		when(dao.findOne(1L)).thenReturn(epargne);
-		CompteEpargne epargne1= (CompteEpargne) Gcl.editCompte(1L);
+		CompteEpargne epargne1 = (CompteEpargne) Gcl.editCompte(1L);
 		assertEquals(epargne1, epargne);
 	}
 

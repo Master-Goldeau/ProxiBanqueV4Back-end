@@ -6,11 +6,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
- * Classe du conseiller ; Prête pour les prochaines itérations du projet
+ * Classe fille Conseiller Elle prend pour paramètre un login et un password que
+ * le conseiller utilisera pour son authentification (prochaine release). Elle
+ * prend également les paramètres de sa classe mère Personne.
  * 
- * @author
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
  *
- * 
  */
 
 @Entity
@@ -23,7 +25,8 @@ public class Conseiller extends Personne {
 	@JoinColumn(name = "gerant_id")
 	private Gerant gerant;
 
-	// constructor
+	// Constructeurs
+
 	public Conseiller() {
 
 	}
@@ -34,7 +37,7 @@ public class Conseiller extends Personne {
 		this.password = password;
 	}
 
-	// getter et setter
+	// Getter et Setter
 
 	// public Set<Client> getClientListConseiller() {
 	// return clientListConseiller;
@@ -67,6 +70,8 @@ public class Conseiller extends Personne {
 	public void setGerant(Gerant gerant) {
 		this.gerant = gerant;
 	}
+
+	// toString
 
 	@Override
 	public String toString() {
