@@ -298,3 +298,145 @@
 				- Closing org.springframework.web.context.support.GenericWebApplicationContext@76a4d6c: startup date [Wed May 23 10:59:26 CEST 2018]; root of context hierarchy
 10:59:29.766 3349 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean
 				- Closing JPA EntityManagerFactory for persistence unit 'default'
+19:25:27.940 249  [main] INFO  o.s.t.c.w.WebTestContextBootstrapper
+				- Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+19:25:27.940 249  [main] INFO  o.s.t.c.w.WebTestContextBootstrapper
+				- Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2f0a87b3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@319b92f3, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@fcd6521, org.springframework.test.context.support.DirtiesContextTestExecutionListener@27d415d9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5c18298f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@31f924f5]
+19:25:28.034 343  [main] INFO  o.s.w.c.s.GenericWebApplicationContext
+				- Refreshing org.springframework.web.context.support.GenericWebApplicationContext@76a4d6c: startup date [Wed May 23 19:25:28 CEST 2018]; root of context hierarchy
+19:25:28.502 811  [main] INFO  o.s.j.d.DriverManagerDataSource
+				- Loaded JDBC driver: com.mysql.jdbc.Driver
+19:25:28.550 859  [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean
+				- Building JPA container EntityManagerFactory for persistence unit 'default'
+19:25:28.628 937  [main] INFO  o.h.annotations.common.Version
+				- HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+19:25:28.643 952  [main] INFO  org.hibernate.Version
+				- HHH000412: Hibernate Core {4.2.1.Final}
+19:25:28.643 952  [main] INFO  org.hibernate.cfg.Environment
+				- HHH000206: hibernate.properties not found
+19:25:28.643 952  [main] INFO  org.hibernate.cfg.Environment
+				- HHH000021: Bytecode provider name : javassist
+19:25:28.659 968  [main] INFO  org.hibernate.ejb.Ejb3Configuration
+				- HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+19:25:28.862 1171 [main] INFO  o.h.s.j.c.i.ConnectionProviderInitiator
+				- HHH000130: Instantiating explicit connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+19:25:29.064 1373 [main] INFO  org.hibernate.dialect.Dialect
+				- HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+19:25:29.080 1389 [main] INFO  o.h.e.j.internal.LobCreatorBuilder
+				- HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+19:25:29.080 1389 [main] INFO  o.h.e.t.i.TransactionFactoryInitiator
+				- HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jdbc.JdbcTransactionFactory
+19:25:29.096 1405 [main] INFO  o.h.h.i.a.ASTQueryTranslatorFactory
+				- HHH000397: Using ASTQueryTranslatorFactory
+19:25:29.252 1561 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate
+				- HHH000228: Running hbm2ddl schema update
+19:25:29.252 1561 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate
+				- HHH000102: Fetching database metadata
+19:25:29.267 1576 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate
+				- HHH000396: Updating schema
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000261: Table found: testProxibanque4.agence
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000037: Columns: [idagence, gerant_id, datecreation]
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000108: Foreign keys: [fk_e279a1ee576b424685749c1f216]
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000126: Indexes: [fk_e279a1ee576b424685749c1f216, primary]
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000261: Table found: testProxibanque4.client
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000037: Columns: [ville, codepostal, adresse, conseiller_id, telephone, id, compteepargne_numcompte, comptecourant_numcompte]
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000108: Foreign keys: [fk_4672195d6e294fb280de256e896, fk_b11ae2ca30f34d65b061a9505a0, fk_18a7a93c4444403c852319b5833, fk_3c6e301997144019a4424007814]
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000126: Indexes: [fk_4672195d6e294fb280de256e896, fk_b11ae2ca30f34d65b061a9505a0, fk_18a7a93c4444403c852319b5833, fk_3c6e301997144019a4424007814, primary]
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000261: Table found: testProxibanque4.compte
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000037: Columns: [numcompte, dateouverture, solde, typecompte]
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000108: Foreign keys: []
+19:25:29.283 1592 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000126: Indexes: [primary]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000261: Table found: testProxibanque4.comptecourant
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000037: Columns: [cartevisa, numcompte]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000108: Foreign keys: [fk_947aa18abc3e40e58caf4a5d82e]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000126: Indexes: [fk_947aa18abc3e40e58caf4a5d82e, primary]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000261: Table found: testProxibanque4.compteepargne
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000037: Columns: [numcompte, tauxremuneration]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000108: Foreign keys: [fk_2a7788fce8a5416ea7edb51c695]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000126: Indexes: [fk_2a7788fce8a5416ea7edb51c695, primary]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000261: Table found: testProxibanque4.conseiller
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000037: Columns: [password, gerant_id, id, login]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000108: Foreign keys: [fk_3cfc8a28bf524bde9e510935fe9, fk_7d797dc550864d0aa5656749722]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000126: Indexes: [fk_7d797dc550864d0aa5656749722, fk_3cfc8a28bf524bde9e510935fe9, primary]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000261: Table found: testProxibanque4.gerant
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000037: Columns: [password, id, login]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000108: Foreign keys: [fk_f25d081e54b34db7b26039befb7]
+19:25:29.298 1607 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000126: Indexes: [fk_f25d081e54b34db7b26039befb7, primary]
+19:25:29.314 1623 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000261: Table found: testProxibanque4.personne
+19:25:29.314 1623 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000037: Columns: [id, nom, prenom]
+19:25:29.314 1623 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000108: Foreign keys: []
+19:25:29.314 1623 [main] INFO  o.h.tool.hbm2ddl.TableMetadata
+				- HHH000126: Indexes: [primary]
+19:25:29.314 1623 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate
+				- HHH000232: Schema update complete
+19:25:29.330 1639 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean
+				- Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:25:29.517 1826 [main] INFO  o.p.s.s.PrestiBanqueServiceImplClient
+				- Création d'un client assiocié à une compte courant
+19:25:29.752 2061 [main] INFO  o.p.s.s.PrestiBanqueServiceImplClient
+				- Création d'un client assiocié à une compte courant
+19:25:30.033 2342 [main] INFO  o.p.s.s.PrestiBanqueServiceImplEmployee
+				- Creation d'une agence
+19:25:30.079 2388 [main] INFO  o.p.s.s.PrestiBanqueServiceImplEmployee
+				- Creation d'un conseiller
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/clients/],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.proxibanqueV4.spring.controller.RestClientController.addClient(org.proxibanqueV4.spring.model.Client)
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/conseillers/],methods=[GET],produces=[application/json]}" onto public java.util.List<org.proxibanqueV4.spring.model.Conseiller> org.proxibanqueV4.spring.controller.RestClientController.getAllConseillers()
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/clients/{idClient}/compteEpargnes/],methods=[POST],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.proxibanqueV4.spring.controller.RestClientController.selectCompteEpargne(long)
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/clients],methods=[GET],produces=[application/json]}" onto public java.util.List<org.proxibanqueV4.spring.model.Client> org.proxibanqueV4.spring.controller.RestClientController.getAllClients()
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/clients/{idClient}],methods=[GET],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<org.proxibanqueV4.spring.model.Client> org.proxibanqueV4.spring.controller.RestClientController.selectOneClient(long)
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/clients/{idClient}],methods=[DELETE]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.proxibanqueV4.spring.controller.RestClientController.removeClient(long)
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/clients/],methods=[PUT],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.proxibanqueV4.spring.controller.RestClientController.modifyClient(org.proxibanqueV4.spring.model.Client)
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/virement/{numCompteDebiteur}/{numCompteCrediteur}/{montant}],methods=[PUT]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.proxibanqueV4.spring.controller.RestClientController.Virement(long,long,double)
+19:25:30.282 2591 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping
+				- Mapped "{[/audit/{numCompte}],methods=[GET]}" onto public org.proxibanqueV4.spring.model.Compte org.proxibanqueV4.spring.controller.RestClientController.audit(long) throws org.proxibanqueV4.spring.exception.AuditException
+19:25:30.313 2622 [main] INFO  o.s.w.s.h.SimpleUrlHandlerMapping
+				- Mapped URL path [/resources/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+19:25:30.469 2778 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter
+				- Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@76a4d6c: startup date [Wed May 23 19:25:28 CEST 2018]; root of context hierarchy
+19:25:30.969 3278 [main] INFO  o.p.s.s.PrestiBanqueServiceImplClient
+				- Afficher un client
+19:25:30.969 3278 [Thread-2] INFO  o.s.w.c.s.GenericWebApplicationContext
+				- Closing org.springframework.web.context.support.GenericWebApplicationContext@76a4d6c: startup date [Wed May 23 19:25:28 CEST 2018]; root of context hierarchy
+19:25:30.984 3293 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean
+				- Closing JPA EntityManagerFactory for persistence unit 'default'

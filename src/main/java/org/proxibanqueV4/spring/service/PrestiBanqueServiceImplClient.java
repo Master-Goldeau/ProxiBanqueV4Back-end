@@ -5,8 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.proxibanqueV4.spring.dao.CrudClientDAO;
-import org.proxibanqueV4.spring.dao.CrudCompteDAO;
-import org.proxibanqueV4.spring.model.Adresse;
+import org.proxibanqueV4.spring.dao.CrudConseillerDAO;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.CompteCourant;
 import org.slf4j.Logger;
@@ -22,14 +21,12 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 	@Autowired
 	private CrudClientDAO crudClientDao;
 	
-	@Autowired
-	private CrudCompteDAO crudCompteDao;
 
 	// pr avoir des données ds la bdd
 	@PostConstruct
 	public void createSomeClient() {
-		addClient(new Client("Sabanoglu", "Saban", "0201202202", new Adresse(7, "rue de Paris", "Paris")));
-		addClient(new Client("Davaro", "Memo", "0201202202", new Adresse(5, "impasse du Four", "Cherbourg")));
+		addClient(new Client("Sabanoglu", "Saban", "0201202202",  "rue de Paris", "Paris", "010210"));
+		addClient(new Client("Davaro", "Memo", "0201202202", "impasse du Four", "Cherbourg","010210"));
 	}
 
 	// getter setter
@@ -45,7 +42,7 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 	@Override
 	public void addClient(Client c) {
 		LOGGER.info("Création d'un client assiocié à une compte courant");
-		c.setCompteCourant(new CompteCourant(1,"13/01/2016", "particulier","visa"));
+		c.setCompteCourant(new CompteCourant(0,"13/01/2016", "particulier","visa"));
 		crudClientDao.save(c);
 
 	}
@@ -75,6 +72,11 @@ public class PrestiBanqueServiceImplClient implements IPrestiBanqueServiceClient
 		crudClientDao.save(c);
 
 	}
+	
+//	@Override
+//	public List<Client> ListesClientsParConseiller(long id) {
+//		return crudClientDao.findByConseiller(id);
+//}
 
 }
 

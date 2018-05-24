@@ -44,7 +44,7 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	@Override
 	public void AssociatedAddCompteE(Client client) {
 		LOGGER.info("Associer un compte épargne à un client lors de sa création");
-		CompteEpargne epargne = new CompteEpargne(0,"13/01/2016", "particulier", 0);
+		CompteEpargne epargne = new CompteEpargne(0, "13/01/2016", "particulier", 0);
 		client.setCompteEpargne(epargne);
 		crudClientDao.save(client);
 	}
@@ -67,24 +67,16 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 		LOGGER.info("Afficher un compte");
 		return crudCompteDao.findOne(numCompte);
 	}
-	
-	
-	
-	List<Compte> listeCompte = new ArrayList<>();
 
-//	@Override
-//	public List<Compte> listComptes() {
-//		Client client = crudClientDao.findOne(id);
-//		List<Compte> listeCompte = new ArrayList<>();
-//		listeCompte.add(client.getCompteCourant());
-//	listeCompte.add(client.getCompteEpargne());
-//return listeCompte;
-		
+	@Override
+	public List<Compte> listComptesUnClient(long idClient) {
+		LOGGER.info("Liste des comptes d'un client");
+		Client client = crudClientDao.findOne(idClient);
+		List<Compte> listeCompte = new ArrayList<>();
+		listeCompte.add(client.getCompteCourant());
+		listeCompte.add(client.getCompteEpargne());
+		return listeCompte;
+
 	}
-	
-
-	
-	
-	
 
 }

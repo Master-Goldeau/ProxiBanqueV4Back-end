@@ -15,6 +15,7 @@ import org.proxibanqueV4.spring.service.InterfaceVirAudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,54 +40,73 @@ public class RestClientController {
 	@Autowired
 	InterfaceVirAudService serviceAuditVirement;
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "/clients", produces = "application/json")
 	public List<Client> getAllClients() {
 		return service.listClients();
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "/clients/{idClient}", produces = "application/json")
 	public ResponseEntity<Client> selectOneClient(@PathVariable("idClient") long idClient) {
-        Client client = service.editClient(idClient);
-        if (client == null) {
-            return new ResponseEntity<Client>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<Client>(client, HttpStatus.OK);
-    }
-	
+		Client client = service.editClient(idClient);
+		if (client == null) {
+			return new ResponseEntity<Client>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Client>(client, HttpStatus.OK);
+	}
 
+	@CrossOrigin(origins = "*")
 	@PostMapping(value = "/clients/", produces = "application/json")
-	@ResponseBody
-	public ResponseEntity<String> addClient(@RequestBody Client c) {
+	public void addClient(@RequestBody Client c) {
 		service.addClient(c);
-		return new ResponseEntity<String>("Ajouter client", HttpStatus.OK);
 	}
 
+	@CrossOrigin(origins = "*")
 	@DeleteMapping(value = "/clients/{idClient}")
-	@ResponseBody
-	public ResponseEntity<String> removeClient(@PathVariable("idClient") long idClient) {
+	public void removeClient(@PathVariable("idClient") long idClient) {
 		service.deleteClient(idClient);
-		return new ResponseEntity<String>("Supprimer client", HttpStatus.OK);
 	}
 
+	@CrossOrigin(origins = "*")
 	@PutMapping(value = "/clients/", produces = "application/json")
-	@ResponseBody
-	public ResponseEntity<String> modifyClient(@RequestBody Client c) {
+	public void modifyClient(@RequestBody Client c) {
 		service.updateClient(c);
-		return new ResponseEntity<String>("modification client", HttpStatus.OK);
+
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "/conseillers/", produces = "application/json")
 	public List<Conseiller> getAllConseillers() {
 		return serviceEmployee.listConseillers();
 	}
 
+	@CrossOrigin(origins = "*")
 	@PostMapping(value = "clients/{idClient}/compteEpargnes/", produces = "application/json")
-	public ResponseEntity<String> selectCompteEpargne(@PathVariable("idClient") long idClient) {
+	public void selectCompteEpargne(@PathVariable("idClient") long idClient) {
 		Client client = service.editClient(idClient);
 		serviceCompte.AssociatedAddCompteE(client);
-		return new ResponseEntity<String>("Ajout d'un compte épargne à un client", HttpStatus.OK);
 	}
 
+//	@CrossOrigin(origins = "*")
+//	@GetMapping(value = "/clients/{idClient}/comptes", produces = "application/json")
+//	public List<Compte> ListeComptesUnClient(@PathVariable long idClient) {
+//		return serviceCompte.listComptesUnClient(idClient);
+//	}
+//
+//	@CrossOrigin(origins = "*")
+//	@GetMapping(value = "comptes/{numCompte}")
+//	public Compte AfficherCompteNumero(@PathVariable long numCompte) {
+//		return serviceCompte.editCompte(numCompte);
+//	}
+//
+//	@CrossOrigin(origins = "*")
+//	@DeleteMapping(value = "/clients/{idClient}/comptes")
+//	public void removeCompte(@PathVariable("idClient") long idClient) {
+//		serviceCompte.deleteCompte(idClient);
+//	}
+
+	@CrossOrigin(origins = "*")
 	@PutMapping(value = "virement/{numCompteDebiteur}/{numCompteCrediteur}/{montant}")
 	public ResponseEntity<String> Virement(@PathVariable long numCompteCrediteur, @PathVariable long numCompteDebiteur,
 			@PathVariable double montant) {
@@ -100,15 +120,14 @@ public class RestClientController {
 
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "audit/{numCompte}")
-	public Compte audit(@PathVariable long numCompte) throws AuditException{	
-		if(serviceAuditVirement.audit(numCompte)==true) {
+	public Compte audit(@PathVariable long numCompte) throws AuditException {
+		if (serviceAuditVirement.audit(numCompte) == true) {
 			return null;
-		}
-		else{
+		} else {
 			return serviceCompte.editCompte(numCompte);
 		}
-		
-		
+
 	}
 }

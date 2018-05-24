@@ -1,13 +1,11 @@
 package org.proxibanqueV4.spring.model;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Embedded;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("client")
@@ -16,9 +14,10 @@ public class Client extends Personne {
 
 	private String telephone;
 
-	@Autowired
-	@Embedded
-	private Adresse adresse;
+	private String adresse;
+	private String ville;
+	private String codePostal;
+
 
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
 	@JoinColumn(name ="conseiller_id")
@@ -35,33 +34,41 @@ public class Client extends Personne {
 	public Client() {
 	}
 
-	public Client(String telephone, Adresse adresse) {
-		this.telephone = telephone;
-		this.adresse = adresse;
-	}
 
-	public Client(Adresse adresse) {
-		this.adresse = adresse;
-	}
+	
 
-	public Client(String nom, String prenom, String telephone, Adresse adresse) {
+	public Client(String nom, String prenom, String telephone, String adresse, String ville, String codePostal) {
 		super(nom, prenom);
 		this.telephone = telephone;
 		this.adresse = adresse;
+		this.ville = ville;
+		this.codePostal = codePostal;
 	}
+
+
+
+
 	// getter setter
 
-	public Adresse getAdresse() {
-		return adresse;
-	}
 
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
-	}
 
 	public String getTelephone() {
 		return telephone;
 	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+
+
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+
+
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
@@ -91,11 +98,32 @@ public class Client extends Personne {
 		this.compteEpargne = compteEpargne;
 	}
 
-	// toString
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+
 	@Override
 	public String toString() {
-		return "Client [telephone=" + telephone + ", adresse=" + adresse + ", getId()=" + getId() + ", getNom()="
-				+ getNom() + ", getPrenom()=" + getPrenom() + ", toString()=" + super.toString() + "]";
+		return "Client [telephone=" + telephone + ", adresse=" + adresse + ", ville=" + ville + ", codePostal="
+				+ codePostal + ", conseiller=" + conseiller + ", compteCourant=" + compteCourant + ", compteEpargne="
+				+ compteEpargne + ", getId()=" + getId() + ", getNom()=" + getNom() + ", getPrenom()=" + getPrenom()
+				+ ", toString()=" + super.toString() + "]";
 	}
+
+	// toString
+	
+	
 
 }
