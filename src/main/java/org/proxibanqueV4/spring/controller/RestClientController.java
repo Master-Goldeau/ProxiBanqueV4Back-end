@@ -101,16 +101,6 @@ public class RestClientController {
 		}
 
 	}
-//	@GetMapping(value = "audit/{numCompte}")
-//	public Compte audit(@PathVariable long numCompte) throws AuditException {
-//		if(serviceAuditVirement.audit(numCompte) == true) {
-//			return null;
-//		} 
-//		else {
-//			return serviceCompte.editCompte(numCompte);
-//		}
-//
-//	}
 
 	@GetMapping(value = "audit/")
 	public List<Compte> audit() throws AuditException {
