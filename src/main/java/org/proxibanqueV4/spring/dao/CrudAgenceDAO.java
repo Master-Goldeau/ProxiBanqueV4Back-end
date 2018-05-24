@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * Cette interface permet de persister les agences Proxibanque dans la base de
- * données.
+ * données
  * 
  * @version ProxibanqueV4
  * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
