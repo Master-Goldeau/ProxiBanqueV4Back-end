@@ -69,15 +69,15 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	}
 
 
-	@Override
-	public List<Compte> listComptesUnClient(long idClient) {
-		LOGGER.info("Liste des comptes d'un client");
-		Client client = crudClientDao.findOne(idClient);
-		List<Compte> listeCompte = new ArrayList<>();
-		listeCompte.add(client.getCompteCourant());
-		listeCompte.add(client.getCompteEpargne());
-		return listeCompte;
-}
+//	@Override
+//	public List<Compte> listComptesUnClient(long idClient) {
+//		LOGGER.info("Liste des comptes d'un client");
+//		Client client = crudClientDao.findOne(idClient);
+//		List<Compte> listeCompte = new ArrayList<>();
+//		listeCompte.add(client.getCompteCourant());
+//		listeCompte.add(client.getCompteEpargne());
+//		return listeCompte;
+//}
 
 }
 
@@ -86,10 +86,10 @@ public class PrestiBanqueServiceImplCompte implements IPrestiBanqueServiceCompte
 	
 
 		
-	}
-	
-
-	
-	
-	
->>>>>>> 36512c4f266d74d34acc803eb71867200c36208a
+//	}
+//	
+//
+//	
+//	
+//	
+//>>>>>>> 36512c4f266d74d34acc803eb71867200c36208a

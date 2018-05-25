@@ -16,7 +16,7 @@ public class Agence {
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
 	private Gerant gerant;
 
-	// consturctor
+	// constructor
 	public Agence() {
 	}
 
