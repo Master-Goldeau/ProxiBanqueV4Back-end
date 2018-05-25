@@ -142,11 +142,7 @@ public class WebService {
 	 return serviceCompte.editCompte(numCompte);
 	 }
 	 
-//	 @CrossOrigin(origins = "*")
-//	 @DeleteMapping(value = "/clients/{idClient}/comptes")
-//	 public void removeCompte(@PathVariable("idClient") long idClient) {
-//	 serviceCompte.deleteCompte(idClient);
-//	 }
+
 
 	/**
 	 * PUT Effectuer un virement compte à compte.
