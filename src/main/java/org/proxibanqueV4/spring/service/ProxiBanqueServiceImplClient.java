@@ -32,8 +32,8 @@ public class ProxiBanqueServiceImplClient implements IProxiBanqueServiceClient {
 	// Ajouter des clients à la Base de Données.
 	@PostConstruct
 	public void createSomeClient() {
-		addClient(new Client("Sabanoglu", "Saban", "0201202202", "rue de Paris", "Paris", "010210"));
-		addClient(new Client("Davaro", "Memo", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Gant", "Julie", "0201202202", "rue de Paris", "Paris", "010210"));
+		addClient(new Client("Davaro", "Tintin", "0201202202", "impasse du Four", "Cherbourg", "010210"));
 	}
 
 	// Getter et Setter
