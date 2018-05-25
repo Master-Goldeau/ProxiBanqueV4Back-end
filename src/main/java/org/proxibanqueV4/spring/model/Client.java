@@ -8,19 +8,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
 
+/**
+ * Classe fille Client qui hérite de la classe mère Personne. Un client est
+ * caractérisé par son nom, son prénom, son adresse, son code postal, sa ville
+ * et son téléphone. Chaque client peut disposer d'un compte courant et d'un
+ * compte épargne.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ *
+ */
+
 @Component("client")
 @Entity
 public class Client extends Personne {
 
 	private String telephone;
-
 	private String adresse;
 	private String ville;
 	private String codePostal;
 
-
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
-	@JoinColumn(name ="conseiller_id")
+	@JoinColumn(name = "conseiller_id")
 	private Conseiller conseiller;
 
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
@@ -29,13 +38,10 @@ public class Client extends Personne {
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
 	private CompteEpargne compteEpargne;
 
-	// constructeur
+	// Constructeurs
 
 	public Client() {
 	}
-
-
-	
 
 	public Client(String nom, String prenom, String telephone, String adresse, String ville, String codePostal) {
 		super(nom, prenom);
@@ -45,12 +51,7 @@ public class Client extends Personne {
 		this.codePostal = codePostal;
 	}
 
-
-
-
-	// getter setter
-
-
+	// Getter et Setter
 
 	public String getTelephone() {
 		return telephone;
@@ -60,15 +61,9 @@ public class Client extends Personne {
 		return adresse;
 	}
 
-
-
-
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-
-
-
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
@@ -114,6 +109,8 @@ public class Client extends Personne {
 		this.codePostal = codePostal;
 	}
 
+	// toString
+
 	@Override
 	public String toString() {
 		return "Client [telephone=" + telephone + ", adresse=" + adresse + ", ville=" + ville + ", codePostal="
@@ -121,9 +118,5 @@ public class Client extends Personne {
 				+ compteEpargne + ", getId()=" + getId() + ", getNom()=" + getNom() + ", getPrenom()=" + getPrenom()
 				+ ", toString()=" + super.toString() + "]";
 	}
-
-	// toString
-	
-	
 
 }

@@ -5,15 +5,25 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * Classe fille Gerant Le gérant est unique et dirige une agence. Elle prend
+ * pour paramètre un login et un password que le gérant utilisera pour son
+ * authentification (prochaine release). Elle prend également les paramètres de
+ * sa classe mère Personne.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ *
+ */
+
 @Entity
 public class Gerant extends Personne {
 
 	private String login;
 	private String password;
 
+	// Constructeurs
 
-	
-	// constructor
 	public Gerant() {
 
 	}
@@ -24,7 +34,8 @@ public class Gerant extends Personne {
 		this.password = password;
 	}
 
-	// getter setter
+	// Getter et Setter
+
 	public String getLogin() {
 		return login;
 	}
@@ -41,7 +52,8 @@ public class Gerant extends Personne {
 		this.password = password;
 	}
 
-	// to string
+	// toString
+
 	@Override
 	public String toString() {
 		return "Gerant [login=" + login + ", password=" + password + ", getId()=" + getId() + ", getNom()=" + getNom()

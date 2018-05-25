@@ -3,8 +3,12 @@ package org.proxibanqueV4.spring.model;
 import javax.persistence.Entity;
 
 /**
+ * Classe fille CompteEpargne qui hérite de la classe mère Compte. Un compte
+ * épargne a pour attribut un taux de Remuneration, mais également les
+ * paramètres de la classe Compte.
  * 
- * Class CompteEpargne qui hérite de la Classe Compte@author Clothilde et Morane
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
  *
  */
 
@@ -12,6 +16,8 @@ import javax.persistence.Entity;
 public class CompteEpargne extends Compte {
 
 	private double tauxRemuneration;
+
+	// Constructeurs
 
 	public CompteEpargne(double tauxRemuneration) {
 		this.tauxRemuneration = tauxRemuneration;
@@ -27,6 +33,8 @@ public class CompteEpargne extends Compte {
 		this.tauxRemuneration = tauxRemuneration;
 	}
 
+	// Getter et Setter
+
 	public double getTauxRemuneration() {
 		return tauxRemuneration;
 	}
@@ -34,6 +42,8 @@ public class CompteEpargne extends Compte {
 	public void setTauxRemuneration(double tauxRemuneration) {
 		this.tauxRemuneration = tauxRemuneration;
 	}
+
+	// toString
 
 	@Override
 	public String toString() {

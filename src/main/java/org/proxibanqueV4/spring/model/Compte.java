@@ -8,11 +8,15 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 /**
- * Classe abstraite Compte avec les attributs numCompte, solde, dateOuverture.
+ * Classe mère abstraite Compte. Les deux classes qui héritent de la classe
+ * Compte sont : CompteCourant et CompteEpargne. Un compte se caractérise par un
+ * numéro de compte, un solde et la date d'ouverture du compte.
  * 
- * @author Morane
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
  *
  */
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Compte {
@@ -30,6 +34,8 @@ public abstract class Compte {
 
 	private String typeCompte;
 
+	// Constructeurs
+
 	public Compte(double solde, String dateOuverture, String typeCompte) {
 		this.solde = solde;
 		this.dateOuverture = dateOuverture;
@@ -42,6 +48,8 @@ public abstract class Compte {
 
 	public Compte() {
 	}
+
+	// Getter et Setter
 
 	public long getNumCompte() {
 		return numCompte;
@@ -67,7 +75,6 @@ public abstract class Compte {
 		this.dateOuverture = dateOuverture;
 	}
 
-	
 	public String getTypeCompte() {
 		return typeCompte;
 	}
@@ -75,6 +82,8 @@ public abstract class Compte {
 	public void setTypeCompte(String typeCompte) {
 		this.typeCompte = typeCompte;
 	}
+
+	// toString
 
 	@Override
 	public String toString() {

@@ -13,15 +13,25 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Classe d'implémentation de l'interface des opérations bancaires faites par un
+ * conseiller. Elle contient l'implémentation des méthodes Audit et Virement.
+ * 
+ * @version ProxibanqueV4
+ * @author Ozlem Avci, Morane Musa, Etienne Savary, Arnaud Renard
+ *
+ */
+
 @Service("serviceAuditVirement")
 public class AuditVirementService implements InterfaceVirAudService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AuditVirementService.class);
+
 	@Autowired
 	private CrudCompteDAO crudCompteDao;
 
 	@Autowired
-	private IPrestiBanqueServiceCompte serviceCompte;
+	private IProxiBanqueServiceCompte serviceCompte;
 
 	@Override
 	public void virement(long numCompteCrediteur, long numCompteDebiteur, double montant) throws DecouvertException {
@@ -55,7 +65,6 @@ public class AuditVirementService implements InterfaceVirAudService {
 		List<Compte> listTousLesComptes = crudCompteDao.findAll();
 		List<Compte> listTousLesComptesCritiques = new ArrayList<>();
 		double auditAutorise;
-
 		for (Compte compte : listTousLesComptes) {
 			if (compte.getTypeCompte().equals("particulier")) {
 				auditAutorise = -5000;

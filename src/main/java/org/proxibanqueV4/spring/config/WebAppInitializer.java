@@ -14,8 +14,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		// TODO Auto-generated method stub
-		
+
 		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
 		rootContext.register(WebConfig.class);
 
@@ -24,20 +23,21 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
 		DispatcherServlet dispatcherServlet = new DispatcherServlet(rootContext);
 
-		//mets ici le filtre
-//		DelegatingFilterProxy filter=new DelegatingFilterProxy("springSecurityFilterChain");
-		
-		ServletRegistration.Dynamic registration = servletContext.addServlet("dispatcherServlet", dispatcherServlet);
-		
-//		servletContext.addFilter("springSecurityFilterChain", filter).addMappingForUrlPatterns(null, false, "/");
+		// mets ici le filtre
+		// DelegatingFilterProxy filter=new
+		// DelegatingFilterProxy("springSecurityFilterChain");
 
-		//charge l'instance 1 ds servlet qd commence
+		ServletRegistration.Dynamic registration = servletContext.addServlet("dispatcherServlet", dispatcherServlet);
+
+		// servletContext.addFilter("springSecurityFilterChain",
+		// filter).addMappingForUrlPatterns(null, false, "/");
+
+		// charge l'instance 1 ds servlet qd commence
 		registration.setLoadOnStartup(1);
-		
-		//servlet prend en compte tt
+
+		// servlet prend en compte tt
 		registration.addMapping("/");
-			
-		
+
 	}
 
 }
