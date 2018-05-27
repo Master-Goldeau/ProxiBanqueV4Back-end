@@ -8,6 +8,7 @@ import org.proxibanqueV4.spring.dao.CrudClientDAO;
 import org.proxibanqueV4.spring.model.Client;
 import org.proxibanqueV4.spring.model.CompteCourant;
 import org.proxibanqueV4.spring.model.CompteEpargne;
+import org.proxibanqueV4.spring.model.Conseiller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,14 @@ public class ProxiBanqueServiceImplClient implements IProxiBanqueServiceClient {
 	@PostConstruct
 	public void createSomeClient() {
 		addClient(new Client("Gant", "Julie", "0201202202", "rue de Paris", "Paris", "010210"));
-		addClient(new Client("Davaro", "Tintin", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Davaro", "Cindy", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Lemoine", "Tintin", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Blanc", "Rick", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Rouge", "Alice", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Bernard", "Sébastien", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Yomet", "David", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Toit", "Etienne", "0201202202", "impasse du Four", "Cherbourg", "010210"));
+		addClient(new Client("Dava", "Daniel", "0201202202", "impasse du Four", "Cherbourg", "010210"));
 	}
 
 	// Getter et Setter
@@ -47,6 +55,7 @@ public class ProxiBanqueServiceImplClient implements IProxiBanqueServiceClient {
 
 	// Méthodes
 
+	
 	@Override
 	public void addClient(Client c) {
 		LOGGER.info("Création d'un client assiocié à un compte courant et un compte épargne");
